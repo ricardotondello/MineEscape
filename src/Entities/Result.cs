@@ -4,12 +4,11 @@ namespace Entities
 {
     public class Result
     {
-        public bool IsSome { get; }
+
         public string Message { get; }
 
         private Result(ResultEnum resultEnum)
         {
-            this.IsSome = resultEnum == ResultEnum.Success;
             this.Message = resultEnum.ToDescriptionString();
         }
         

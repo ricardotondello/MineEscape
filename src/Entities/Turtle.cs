@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using Utils;
 
 namespace Entities
 {
@@ -9,15 +11,28 @@ namespace Entities
 
         public Position StartPosition
         {
+            get => _startPosition;
             set
             {
                 _startPosition = value;
-                CurrentPosition = value;
+                CurrentPosition = new Position()
+                {
+                    Direction = _startPosition.Direction,
+                    Position = _startPosition.Position
+                };
             }
         }
 
-        public List<TurtleAction> Actions { get; set; }
+        public List<Move> Moves { get; set; }
 
+        public void ResetTurtle()
+        {
+            CurrentPosition = CurrentPosition = new Position()
+            {
+                Direction = StartPosition.Direction,
+                Position = StartPosition.Position
+            };
+        }
         public void DoRotate(TurtleAction action)
         {
             var newPosition = CurrentPosition;

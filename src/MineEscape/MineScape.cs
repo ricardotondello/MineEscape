@@ -22,13 +22,17 @@ namespace MineEscape
             ValidateGame();
             Console.WriteLine("Game started...");
             
-            foreach (var move in _game.Turtle.Actions)
+            foreach (var move in _game.Turtle.Moves)
             {
-                var result = _game.MoveTurtle(move);
-                _results.Add(result);
-                Console.WriteLine(result.Message);
+                _game.Turtle.ResetTurtle();
+                var result = Result.StillInDanger();
+                foreach (var action in move.Actions)
+                {
+                    result = _game.MoveTurtle(action);
+                    _results.Add(result);
+                }
                 
-                if (result.IsSome) break;
+                Console.WriteLine(result.Message);
             }
             
             Console.WriteLine("End of game...");
@@ -37,7 +41,7 @@ namespace MineEscape
         private void ValidateGame()
         {
             if ((_game.Board == null) || (_game.Board.Minefield.Length <= 0)) throw new BusinessException("Board invalid");
-            if ((_game.Turtle == null) || (!_game.Turtle.Actions.Any())) throw new BusinessException("Turtle does not have any move");
+            if ((_game.Turtle == null) || (!_game.Turtle.Moves.Any())) throw new BusinessException("Turtle does not have any move");
             if ((_game.ExitPoint == null) || ((_game.ExitPoint.Position.X < 0) || (_game.ExitPoint.Position.Y < 0))) throw  new BusinessException("Exit position invalid"); 
         }
     }

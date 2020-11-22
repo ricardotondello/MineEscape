@@ -21,6 +21,12 @@ namespace Test
             actions.Add(TurtleAction.L);
             actions.Add(TurtleAction.M);
             
+            var moves = new List<Move>();
+            moves.Add(new Move()
+            {
+                Actions = actions
+            });
+            
             var game = new Game()
             {
                 Board =  new Board(1,1),
@@ -30,7 +36,7 @@ namespace Test
                 },
                 Turtle = new Turtle()
                 {
-                    Actions = actions,
+                    Moves = moves,
                     StartPosition = new Position()
                     {
                         Direction = Direction.N,
@@ -44,7 +50,7 @@ namespace Test
             // Assert
             mineEscape.Play();
             
-            Assert.True(results.Last().IsSome);
+            Assert.True(results.Last().Message == ResultEnum.Success.ToDescriptionString());
         }
         
         [Fact]
@@ -55,6 +61,11 @@ namespace Test
             actions.Add(TurtleAction.L);
             actions.Add(TurtleAction.M);
             
+            var moves = new List<Move>();
+            moves.Add(new Move()
+            {
+                Actions = actions
+            });
             var game = new Game()
             {
                 Board =  new Board(1,1),
@@ -64,7 +75,7 @@ namespace Test
                 },
                 Turtle = new Turtle()
                 {
-                    Actions = actions,
+                    Moves = moves,
                     StartPosition = new Position()
                     {
                         Direction = Direction.N,
@@ -89,6 +100,11 @@ namespace Test
             actions.Add(TurtleAction.L);
             actions.Add(TurtleAction.M);
             
+            var moves = new List<Move>();
+            moves.Add(new Move()
+            {
+                Actions = actions
+            });
             var mines = new List<Mine>();
             mines.Add(new Mine()
             {
@@ -103,7 +119,7 @@ namespace Test
                 },
                 Turtle = new Turtle()
                 {
-                    Actions = actions,
+                    Moves = moves,
                     StartPosition = new Position()
                     {
                         Direction = Direction.N,
@@ -128,6 +144,11 @@ namespace Test
             var actions = new List<TurtleAction>();
             actions.Add(TurtleAction.R);
             actions.Add(TurtleAction.M);
+            var moves = new List<Move>();
+            moves.Add(new Move()
+            {
+                Actions = actions
+            });
             
             var mines = new List<Mine>();
             mines.Add(new Mine()
@@ -143,7 +164,7 @@ namespace Test
                 },
                 Turtle = new Turtle()
                 {
-                    Actions = actions,
+                    Moves = moves,
                     StartPosition = new Position()
                     {
                         Direction = Direction.N,
@@ -169,6 +190,12 @@ namespace Test
             actions.Add(TurtleAction.L);
             actions.Add(TurtleAction.M);
             
+            var moves = new List<Move>();
+            moves.Add(new Move()
+            {
+                Actions = actions
+            });
+            
             var mines = new List<Mine>();
             mines.Add(new Mine()
             {
@@ -183,7 +210,7 @@ namespace Test
                 },
                 Turtle = new Turtle()
                 {
-                    Actions = actions,
+                    Moves = moves,
                     StartPosition = new Position()
                     {
                         Direction = Direction.N,
@@ -210,6 +237,12 @@ namespace Test
             actions.Add(TurtleAction.R);
             actions.Add(TurtleAction.M);
             
+            var moves = new List<Move>();
+            moves.Add(new Move()
+            {
+                Actions = actions
+            });
+            
             var mines = new List<Mine>();
             mines.Add(new Mine()
             {
@@ -224,7 +257,7 @@ namespace Test
                 },
                 Turtle = new Turtle()
                 {
-                    Actions = actions,
+                    Moves = moves,
                     StartPosition = new Position()
                     {
                         Direction = Direction.N,
@@ -253,6 +286,12 @@ namespace Test
             actions.Add(TurtleAction.R);
             actions.Add(TurtleAction.M);
             
+            var moves = new List<Move>();
+            moves.Add(new Move()
+            {
+                Actions = actions
+            });
+            
             var mines = new List<Mine>();
             mines.Add(new Mine()
             {
@@ -267,7 +306,7 @@ namespace Test
                 },
                 Turtle = new Turtle()
                 {
-                    Actions = actions,
+                    Moves = moves,
                     StartPosition = new Position()
                     {
                         Direction = Direction.N,
@@ -334,12 +373,18 @@ namespace Test
             // Arrange
             var actions = new List<TurtleAction>();
             actions.Add(TurtleAction.L);
+            
+            var moves = new List<Move>();
+            moves.Add(new Move()
+            {
+                Actions = actions
+            });
             var game = new Game()
             {
                 Board =  new Board(1,1),
                 Turtle = new Turtle()
                 {
-                    Actions = actions
+                    Moves = moves
                 }
             };
             var results = new List<Result>();
@@ -362,12 +407,19 @@ namespace Test
             // Arrange
             var actions = new List<TurtleAction>();
             actions.Add(TurtleAction.L);
+            
+            var moves = new List<Move>();
+            moves.Add(new Move()
+            {
+                Actions = actions
+            });
+            
             var game = new Game()
             {
                 Board =  new Board(1,1),
                 Turtle = new Turtle()
                 {
-                    Actions = actions
+                    Moves = moves
                 },
                 ExitPoint = new ExitPoint()
                 {

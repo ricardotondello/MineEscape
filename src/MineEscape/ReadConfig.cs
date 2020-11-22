@@ -66,16 +66,19 @@ namespace MineEscape
                 int.TryParse(startPositionStrings[1], out var posY);
                 Enum.TryParse(startPositionStrings[2], out Direction direction);
                 
-                var actions = new List<TurtleAction>();
-                
+                var turtleMoves = new List<Move>(); 
                 for (var i = 4; i < lines.Count; i++)
                 {
+                    var moves = new Move();
+                    // var actions = new List<TurtleAction>();
                     var movesString = lines[i].Split(SpaceSeparator);
                     foreach (var moveString in movesString)
                     {
                         Enum.TryParse(moveString, out TurtleAction move);
-                        actions.Add(move);
+                        // actions.Add(move);
+                        moves.Actions.Add(move);
                     }
+                    turtleMoves.Add(moves);
                 }
                 
                 return new Turtle()
@@ -85,7 +88,7 @@ namespace MineEscape
                         Position = new Point(posX, posY), 
                         Direction = direction
                     },
-                    Actions = actions
+                    Moves = turtleMoves
                 };
             }
             

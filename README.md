@@ -19,8 +19,10 @@ Ex:
 1,1 1,3 3,3
 2 4
 1 0 N
-R M M M M R M
-R R M M L M M M M L M
+M R M M R M L M
+M R M M R M M L M M
+R R M M L M M L M M M R M M R M M
+M R M M R M M R M M R M
 ```
 
 Where
